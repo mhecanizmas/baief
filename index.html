@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Still There</title>
+<meta name="description" content="Twin landscapes on Earth, Mars and the Moon — photographed by machines nobody came back for. A NASA Space Apps project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text">
+      <strong>STILL&nbsp;THERE</strong>
+      <small data-i18n="brand.tagline">Twin places on two worlds &mdash; seen by machines we left behind</small>
+    </span>
+  </div>
+
+  <nav class="modes" role="tablist" aria-label="Mode">
+    <button class="mode-btn is-active" data-mode="stories" role="tab" aria-selected="true" data-i18n="mode.stories">Stories</button>
+    <button class="mode-btn" data-mode="explore" role="tab" aria-selected="false" data-i18n="mode.explore">Now you try</button>
+  </nav>
+
+  <div class="topbar-right">
+    <div class="langs" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="tr">TR</button>
+    </div>
+    <label class="lock">
+      <input type="checkbox" id="scaleLock" checked>
+      <span data-i18n="lock">Lock scale</span>
+    </label>
+    <button id="helpBtn" class="ghost-btn" aria-haspopup="dialog" data-i18n="help">How to use</button>
+  </div>
+</header>
+
+<main class="stage">
+
+  <!-- ───────── left rail: pair chooser ───────── -->
+  <aside class="rail" id="rail">
+    <div class="rail-head">
+      <h2 data-i18n="rail.title">Pick a pair of places</h2>
+      <p data-i18n="rail.intro">One spot on Earth. One spot on another world that looks startlingly like it.</p>
+    </div>
+    <ul class="pair-list" id="pairList"></ul>
+    <div class="rail-foot">
+      <p class="credit" data-i18n="rail.credit">Imagery: NASA GIBS &middot; NASA Mars&nbsp;Trek &middot; NASA Moon&nbsp;Trek &middot; NASA Image&nbsp;Library</p>
+    </div>
+  </aside>
+
+  <!-- ───────── centre: the twin maps ───────── -->
+  <section class="maps" id="maps">
+
+    <div class="map-wrap" data-side="earth">
+      <div class="map-label">
+        <span class="chip chip-earth" id="earthChip">EARTH</span>
+        <span class="place" id="earthPlace">&mdash;</span>
+      </div>
+      <div id="mapEarth" class="map"></div>
+      <div class="map-meta">
+        <select class="layer-pick" id="earthLayer" aria-label="Earth imagery layer"></select>
+        <span class="readout" id="earthReadout">&mdash;</span>
+      </div>
+    </div>
+
+    <div class="map-divider" aria-hidden="true">
+      <div class="scalebar" id="scalebar">
+        <div class="scalebar-line"><span></span></div>
+        <div class="scalebar-text" id="scalebarText">&mdash;</div>
+        <div class="scalebar-note">&nbsp;</div>
+      </div>
+    </div>
+
+    <div class="map-wrap" data-side="target">
+      <div class="map-label">
+        <span class="chip chip-target" id="targetChip">MARS</span>
+        <span class="place" id="targetPlace">&mdash;</span>
+      </div>
+      <div id="mapTarget" class="map"></div>
+      <div class="map-meta">
+        <select class="layer-pick" id="targetLayer" aria-label="Target body imagery layer"></select>
+        <span class="readout" id="targetReadout">&mdash;</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ───────── right: the story ───────── -->
+  <aside class="story" id="story" aria-live="polite"></aside>
+
+  <!-- ───────── explore-mode panel ───────── -->
+  <aside class="explore" id="explore" hidden></aside>
+
+</main>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/content-tr.js"></script>
+<script src="js/nasa.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
