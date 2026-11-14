@@ -57,6 +57,7 @@ function relanguage() {
   if (activePair) paintPair(L10N.pair(activePair));
   if (mode === 'explore') {
     renderExplore();
+    paintFreeRoam();
     if (myPick.earth)  Twin.dropPin('earth',  myPick.earth.lat,  myPick.earth.lon,  T('pin.earth'));
     if (myPick.target) Twin.dropPin('target', myPick.target.lat, myPick.target.lon, T('pin.target'));
   }
@@ -107,6 +108,14 @@ function selectPair(src) {
   Twin.showPair(pair);
   buildLayerPickers();
   paintPair(pair);
+}
+
+/* In explore mode there is no "pair", so the headers must stop claiming
+   one. Without this the chip kept saying MARS while showing the Moon. */
+function paintFreeRoam() {
+  $('#targetChip').textContent  = L10N.body(Twin.bodyKey).toUpperCase();
+  $('#earthPlace').textContent  = T('ex.freeroam');
+  $('#targetPlace').textContent = T('ex.freeroam');
 }
 
 /* The words for a pair, with no effect on where the maps are pointing. */
@@ -291,7 +300,9 @@ function setMode(next) {
     earthMap.on('click', onExploreClick);
     targetMap.on('click', onExploreClick);
     renderExplore();
+    paintFreeRoam();
   } else {
+    if (activePair) paintPair(L10N.pair(activePair));
     earthMap.off('click', onExploreClick);
     targetMap.off('click', onExploreClick);
   }
@@ -369,7 +380,12 @@ function renderExplore() {
     </section>`;
 
   host.querySelectorAll('.ex-body').forEach(b =>
-    b.onclick = () => { Twin.setBody(b.dataset.body); buildLayerPickers(); renderExplore(); });
+    b.onclick = () => {
+      Twin.setBody(b.dataset.body);
+      buildLayerPickers();
+      renderExplore();
+      paintFreeRoam();
+    });
 
   const save = host.querySelector('#exSave');
   if (save) save.onclick = () => {
@@ -398,6 +414,7 @@ function renderExplore() {
     Twin.dropPin('target', s.target.lat, s.target.lon, T('pin.target'));
     buildLayerPickers();
     renderExplore();
+    paintFreeRoam();
   });
 
   host.querySelectorAll('.ex-del').forEach(b => b.onclick = () => {

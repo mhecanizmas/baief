@@ -67,6 +67,7 @@ const UI = {
   "ex.export":       { en: "Download as a file", tr: "Dosya olarak indir" },
   "ex.untitled":     { en: "Untitled comparison", tr: "Adsız karşılaştırma" },
   "ex.delete":       { en: "Delete", tr: "Sil" },
+  "ex.freeroam":     { en: "free exploration", tr: "serbest keşif" },
 
   "help.title":      { en: "How to use this", tr: "Bu nasıl kullanılır" },
   "help.1":          { en: "<strong>Pick a pair.</strong> Each one is a place on Earth next to a place on Mars or the Moon that formed the same way.",

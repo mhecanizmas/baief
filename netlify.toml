@@ -1,0 +1,72 @@
+# ============================================================
+#  STILL THERE — Netlify yapılandırması
+#
+#  Bu dosya repo KÖKÜNDE durmak zorunda. Netlify netlify.toml'u
+#  yalnızca kökte arar; deploy/ klasörüne taşırsan sessizce
+#  yok sayılır ve aşağıdaki hiçbir ayar uygulanmaz.
+#
+#  Adım adım anlatım: deploy/NETLIFY.md
+# ============================================================
+
+[build]
+  # Derleme adımı yok. Site düz HTML/CSS/JS, index.html kökte.
+  # Bu yüzden yayın klasörü de kökün kendisi.
+  publish = "."
+  command = ""
+
+# ------------------------------------------------------------
+#  Güvenlik ve içerik politikası
+# ------------------------------------------------------------
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+    # Site dokuz dış kaynaktan veri çekiyor. Buradaki listeden BİRİNİ
+    # bile silersen o katman sessizce boş gelir — haritalar siyah kalır.
+    # Liste kaynakta geçen origin'lerle birebir eşleşiyor; yeni bir
+    # servis eklersen buraya da eklemen gerekir.
+    #
+    #   cdnjs.cloudflare.com   -> Leaflet (js + css)
+    #   fonts.googleapis.com   -> Google Fonts stil dosyası
+    #   fonts.gstatic.com      -> yazı tipi dosyalarının kendisi
+    #   gibs.earthdata.nasa.gov-> Dünya karoları (NASA GIBS)
+    #   trek.nasa.gov          -> Mars ve Ay karoları (NASA Trek)
+    #   astro.arcgis.com       -> Mars CTX mozaiği (Esri üzerinden)
+    #   server.arcgisonline.com-> altmetre hava görüntüsü (NASA değil)
+    #   images-api.nasa.gov    -> fotoğraf arama / asset listesi (fetch)
+    #   images-assets.nasa.gov -> fotoğrafların kendisi (img + fetch)
+    #
+    # style-src'de 'unsafe-inline' bilinçli bir taviz: Leaflet çalışma
+    # anında eleman stillerini JavaScript ile kuruyor ve sıkı bir
+    # style-src burada sessiz, teşhisi zor kırılmalara yol açabiliyor.
+    # Sitede kullanıcı girdisi yok, dolayısıyla risk pratikte sıfır.
+    # script-src'de ise 'unsafe-inline' YOK ve olmasına gerek de yok:
+    # index.html'de tek bir satır içi betik bulunmuyor.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://gibs.earthdata.nasa.gov https://trek.nasa.gov https://astro.arcgis.com https://server.arcgisonline.com https://images-assets.nasa.gov; connect-src 'self' https://images-api.nasa.gov https://images-assets.nasa.gov https://gibs.earthdata.nasa.gov https://trek.nasa.gov https://astro.arcgis.com https://server.arcgisonline.com; base-uri 'self'; form-action 'none'; frame-ancestors 'self'; object-src 'none'"
+
+# ------------------------------------------------------------
+#  Önbellek
+#  Dosya adlarında sürüm damgası (app.a1b2c3.js gibi) YOK. Bu yüzden
+#  uzun önbellek tehlikeli: yeni sürümü yayınlarsın ama ziyaretçi
+#  eski JS'i görmeye devam eder. must-revalidate bunu önler —
+#  tarayıcı dosyayı saklar, ama her açılışta değişti mi diye sorar.
+# ------------------------------------------------------------
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
