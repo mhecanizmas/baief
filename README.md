@@ -7,6 +7,9 @@ NASA's Discarded Equipment on the Moon and Mars.*
 
 **→ [mhecanizmas.github.io/still-there](https://mhecanizmas.github.io/still-there/)**
 
+Sunum yapacaksanız: [DEMO.md](DEMO.md) — iki dakikalık akış, tıklama sırası ve
+jüri sorularına hazırlık. *(Presenting? `DEMO.md` has the two-minute script.)*
+
 ---
 
 ## The idea
