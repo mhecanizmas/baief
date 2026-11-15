@@ -79,7 +79,7 @@ function buildPairList() {
 
     const li = el('li', 'pair-item');
     li.innerHTML = `
-      <button class="pair-btn" data-id="${esc(pair.id)}">
+      <button class="pair-btn" data-id="${esc(pair.id)}" data-world="${esc(L10N.body(pair.body))}">
         <span class="pair-places">
           <span class="pp pp-earth">${esc(pair.earth.name)}</span>
           <span class="pp-vs">&middot;</span>
@@ -108,6 +108,24 @@ function selectPair(src) {
   Twin.showPair(pair);
   buildLayerPickers();
   paintPair(pair);
+
+  /* Small screens show the pairs as a horizontal strip, so the chosen card
+     has to bring itself into view. This runs after the maps have been
+     rebuilt: doing it before lets that work interrupt the smooth scroll. */
+  if (window.matchMedia('(max-width: 1100px)').matches) centreChosenCard();
+}
+
+/* Leaflet's setView and tile work reflow the page on the same frame, which
+   cancels a smooth scroll started inside requestAnimationFrame. Waiting for
+   the layout to settle first makes it stick. */
+function centreChosenCard() {
+  setTimeout(() => {
+    const card = document.querySelector('.pair-btn.is-on')?.parentElement;
+    const strip = card?.parentElement;
+    if (!card || !strip || !strip.clientWidth) return;
+    const left = card.offsetLeft - (strip.clientWidth - card.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  }, 160);
 }
 
 /* In explore mode there is no "pair", so the headers must stop claiming

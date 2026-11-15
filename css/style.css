@@ -443,29 +443,82 @@ body.mode-explore .stage { grid-template-columns: minmax(0, 1fr) var(--story-w);
   html, body { height: auto; }
   .stage, body.mode-explore .stage {
     height: auto;
-    grid-template-columns: 1fr;
+    /* minmax(0,1fr), not 1fr: a plain 1fr track refuses to go below its
+       content's min-content width, so the 8-card strip stretched the
+       whole page to 1919px instead of scrolling inside itself. */
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto auto;
     overflow: visible;
   }
+
+  /* The pair chooser becomes a swipe strip. A short box with its own
+     vertical scroll fights the page scroll under a thumb. */
   .rail {
     border-right: 0; border-bottom: 1px solid var(--line);
-    height: 196px; flex: none;
+    height: auto; overflow: visible; min-width: 0;
   }
-  .rail-head { padding: 13px 15px 9px; }
-  .rail-head p { display: none; }
+  .rail-head { padding: 14px 16px 10px; }
+  .rail-head h2 { font-size: 12px; margin-top: 12px; }
+  .rail-head > p:not(.rail-lead) { display: none; }
+  .rail-lead { margin: 0; }
   .rail-foot { display: none; }
+
+  .pair-list {
+    display: flex; gap: 9px; padding: 0 16px 14px; margin: 0;
+    min-width: 0; max-width: 100%;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .pair-list::-webkit-scrollbar { display: none; }
+  .pair-group { display: none; }
+  .pair-item { flex: 0 0 250px; scroll-snap-align: center; }
+  .pair-btn {
+    height: 100%; margin: 0;
+    background: var(--bg-3); border-color: var(--line-soft);
+  }
+  .pair-btn::before {
+    content: attr(data-world);
+    display: block; margin-bottom: 6px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .pair-btn.is-on { border-color: var(--mars); background: var(--bg-3); }
+  .pair-btn.is-on::before { color: var(--mars); }
+
   .story, .explore { border-left: 0; border-top: 1px solid var(--line); overflow: visible; }
-  .maps { height: 54vh; min-height: 380px; }
+
+  /* tablets: the two maps still fit side by side, so give them height */
+  .maps { height: 58vh; min-height: 420px; grid-template-columns: minmax(0,1fr) 58px minmax(0,1fr); min-width: 0; }
+  .scalebar-note { font-size: 8.5px; }
+
+  /* the layer name and the readout stop competing for one short line:
+     the readout drops to its own line when it will not fit */
+  .map-meta { flex-wrap: wrap; row-gap: 3px; }
+  .layer-pick { max-width: 100%; flex: 0 1 auto; }
+  .readout { flex: 1 1 100%; }
+
+  /* comfortable thumb targets */
+  .mode-btn { padding: 9px 16px; }
+  .ghost-btn { padding: 9px 14px; }
+  .lang-btn { padding: 7px 11px; }
+  .layer-pick { padding: 7px 8px; }
+  .leaflet-control-zoom a { width: 34px !important; height: 34px !important; line-height: 34px !important; }
 }
 
 @media (max-width: 680px) {
-  .topbar { height: auto; flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
+  .topbar { height: auto; flex-wrap: wrap; gap: 9px; padding: 10px 14px; }
   .brand-text small { display: none; }
-  .topbar-right { width: 100%; margin-left: 0; justify-content: space-between; }
+  .topbar-right { width: 100%; margin-left: 0; justify-content: space-between; gap: 8px; }
+  .modes { flex: 1; }
+  .mode-btn { flex: 1; text-align: center; }
+
+  .pair-item { flex: 0 0 228px; }
 
   /* stack the two maps instead of putting them side by side */
   .maps {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 286px auto 286px;
     height: auto; min-height: 616px;
   }
@@ -476,10 +529,9 @@ body.mode-explore .stage { grid-template-columns: minmax(0, 1fr) var(--story-w);
   .scalebar { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 7px; }
   .scalebar-line { margin: 0; }
   .scalebar-line span { max-width: 110px; }
-  .scalebar-note { margin: 0; text-align: left; }
+  .scalebar-note { margin: 0; text-align: left; font-size: 8.5px; }
 
-  .layer-pick { max-width: 50%; }
-  .leaflet-control-attribution { font-size: 8.5px !important; max-width: 62%; }
+  .leaflet-control-attribution { font-size: 8.5px !important; max-width: 60%; }
 
   .story, .explore { padding: 16px 14px 40px; }
   .ex-picks { grid-template-columns: 1fr; }
@@ -487,7 +539,17 @@ body.mode-explore .stage { grid-template-columns: minmax(0, 1fr) var(--story-w);
   .cmp-head { display: none; }
   .cmp-e::before { content: 'Earth: '; color: var(--earth); }
   .cmp-t::before { content: 'There: '; color: var(--mars); }
+  html[lang="tr"] .cmp-e::before { content: 'Dünya: '; }
+  html[lang="tr"] .cmp-t::before { content: 'Orada: '; }
   .hw-facts div { grid-template-columns: 96px 1fr; }
+  .hw-gallery { gap: 6px; }
+  .modal { padding: 12px; }
+  .modal-box { padding: 18px 16px; }
+}
+
+/* a touch screen has no hover, so the readout tooltip needs room to breathe */
+@media (hover: none) {
+  .stretch { cursor: default; }
 }
 
 /* "this is bigger than the data really is" badge */
