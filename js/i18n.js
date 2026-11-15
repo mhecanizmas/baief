@@ -34,7 +34,7 @@ const UI = {
   "read.enlargedTip":{ en: "This imagery has been enlarged beyond its true resolution. The detail you are seeing is not real detail.",
                        tr: "Bu görüntü gerçek çözünürlüğünün ötesinde büyütüldü. Gördüğün ayrıntı gerçek ayrıntı değil." },
 
-  "hw.tag":          { en: "Still there", tr: "Hâlâ orada" },
+  "hw.tag":          { en: "Left behind", tr: "Hâlâ orada" },
   "hw.type":         { en: "Type", tr: "Türü" },
   "hw.life":         { en: "Working life", tr: "Çalışma ömrü" },
   "hw.where":        { en: "Where it is now", tr: "Şimdi nerede" },
@@ -102,7 +102,7 @@ const L10N = {
 
   init() {
     let saved = null;
-    try { saved = localStorage.getItem('stillthere.lang'); } catch { /* private mode */ }
+    try { saved = localStorage.getItem('baief.lang'); } catch { /* private mode */ }
     if (saved === 'tr' || saved === 'en') this.lang = saved;
     else if ((navigator.language || '').toLowerCase().startsWith('tr')) this.lang = 'tr';
     document.documentElement.lang = this.lang;
@@ -112,7 +112,7 @@ const L10N = {
   set(lang) {
     this.lang = (lang === 'tr') ? 'tr' : 'en';
     document.documentElement.lang = this.lang;
-    try { localStorage.setItem('stillthere.lang', this.lang); } catch { /* private mode */ }
+    try { localStorage.setItem('baief.lang', this.lang); } catch { /* private mode */ }
   },
 
   t(key) {

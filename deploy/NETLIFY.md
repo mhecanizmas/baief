@@ -30,7 +30,7 @@ kendiliğinden tazelenir.
 1. [app.netlify.com](https://app.netlify.com) → giriş yap (GitHub hesabınla
    girebilirsin).
 2. **Add new site** → **Import an existing project** → **GitHub**.
-3. Netlify repo listesine erişmek için izin ister. `still-there` deposunu seç.
+3. Netlify repo listesine erişmek için izin ister. `baief` deposunu seç.
 4. Ayar ekranı gelir. `netlify.toml` zaten doldurduğu için dokunman gereken
    bir şey yok. Yine de kontrol et:
 
@@ -46,7 +46,7 @@ kendiliğinden tazelenir.
 5. **Deploy site**. Yarım dakika sürer.
 6. Sana `rastgele-kelime-123456.netlify.app` gibi bir adres verir. Değiştirmek
    için: **Site configuration** → **Site details** → **Change site name**.
-   Örneğin `still-there` yazarsan adres `still-there.netlify.app` olur.
+   Örneğin `baief` yazarsan adres `baief.netlify.app` olur.
 
 Bundan sonra `main`'e her push ettiğinde site kendiliğinden yeniden yayınlanır.
 
@@ -123,7 +123,7 @@ curl -sI https://SENIN-ADRESIN.netlify.app | grep -i "content-security-policy\|c
 ## GitHub Pages ile birlikte
 
 Proje zaten GitHub Pages'te yayında:
-**https://mhecanizmas.github.io/still-there/**
+**https://mhecanizmas.github.io/baief/**
 
 Netlify'a da yayınlamak ikisinden birini bozmaz — aynı depodan iki ayrı adres
 beslenir, ikisi de `main` dalını izler. Pratikte işe yarar bir kullanımı var:

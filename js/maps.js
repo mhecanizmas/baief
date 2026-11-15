@@ -64,7 +64,7 @@ const Twin = (() => {
       if (baseLayer) { targetMap.removeLayer(baseLayer); baseLayer = null; }
       return;
     }
-    if (!baseLayer || baseLayer._stillThereBase !== id) setBase();
+    if (!baseLayer || baseLayer._baiefBase !== id) setBase();
   }
 
   function setBase() {
@@ -79,7 +79,7 @@ const Twin = (() => {
       noWrap: true, bounds: [[-90, -180], [90, 180]],
       zIndex: 1, attribution: def.attribution || ''
     }).addTo(targetMap);
-    baseLayer._stillThereBase = id;
+    baseLayer._baiefBase = id;
   }
 
   /* ---------------- layers ---------------- */
@@ -137,7 +137,7 @@ const Twin = (() => {
       c.lng >= r.bounds[0][1] && c.lng <= r.bounds[1][1]);
 
     if (!hit) { clearRegional(); return; }
-    if (regionalLayer && regionalLayer._stillThereId === hit.id) return;
+    if (regionalLayer && regionalLayer._baiefId === hit.id) return;
 
     clearRegional();
     regionalLayer = L.tileLayer(
@@ -145,7 +145,7 @@ const Twin = (() => {
       { tileSize: 256, maxNativeZoom: hit.maxZoom, maxZoom: targetMap.options.maxZoom,
         bounds: hit.bounds, noWrap: true, opacity: 1, zIndex: 3,
         attribution: 'NASA Mars Trek · regional CTX mosaic' });
-    regionalLayer._stillThereId = hit.id;
+    regionalLayer._baiefId = hit.id;
     regionalLayer.addTo(targetMap);
   }
 
@@ -268,7 +268,7 @@ const Twin = (() => {
       target: { center: targetMap.getCenter(), zoom: targetMap.getZoom(),
                 mpp: mppOf('target'), def: activeDef('target'),
                 enlarged: stretch('target'),
-                regional: regionalLayer ? regionalLayer._stillThereId : null }
+                regional: regionalLayer ? regionalLayer._baiefId : null }
     };
     onChange.forEach(fn => fn(state));
   }

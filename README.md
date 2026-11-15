@@ -9,7 +9,7 @@ one — the one nobody ever went back for.
 A NASA Space Apps entry for *Abandoned but not Forgotten: Storytelling about
 NASA's Discarded Equipment on the Moon and Mars.*
 
-**→ [mhecanizmas.github.io/still-there](https://mhecanizmas.github.io/still-there/)**
+**→ [mhecanizmas.github.io/baief](https://mhecanizmas.github.io/baief/)**
 
 Sunum yapacaksanız: [DEMO.md](DEMO.md) — iki dakikalık akış, tıklama sırası ve
 jüri sorularına hazırlık. *(Presenting? `DEMO.md` has the two-minute script.)*
@@ -25,7 +25,7 @@ could stand in.
 So the project puts the two side by side: Göreme next to a Martian ash plateau,
 Pamukkale next to a Martian hot-spring deposit, Tuz Gölü next to a Martian salt
 flat. The student compares rock, erosion and craters with their own eyes. Then
-they read who took the picture on the right, and learn that it is still there,
+they read who took the picture on the right, and learn that it is still sitting there,
 silent, and nobody is going back for it.
 
 Geology is the hook. The abandoned machine is the story.
@@ -57,7 +57,7 @@ moves the maps, so a student mid-exploration keeps their view.
 
 ## The eight pairs
 
-| Earth | Another world | Still there |
+| Earth | Another world | Left behind |
 |---|---|---|
 | Göreme, Cappadocia | Aeolis & Zephyria Planum, Mars | **Mars Global Surveyor** (1996–2006), dead in orbit |
 | Tuz Gölü | Endeavour Crater, Mars | **Opportunity** (2004–2018) |

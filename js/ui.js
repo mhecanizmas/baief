@@ -22,7 +22,7 @@ const T = k => L10N.t(k);
 
 let activePair = null;
 let mode = 'stories';
-const STORE_KEY = 'stillthere.comparisons.v1';
+const STORE_KEY = 'baief.comparisons.v1';
 
 /* ───────────────────────── boot ───────────────────────── */
 
@@ -175,7 +175,7 @@ function renderStory(pair) {
       <dl class="hw-facts">
         <div><dt>${esc(T('hw.type'))}</dt><dd>${esc(hw.kind)}</dd></div>
         <div><dt>${esc(T('hw.life'))}</dt><dd>${esc(hw.lifetime)}</dd></div>
-        <div><dt>${esc(T('hw.where'))}</dt><dd>${esc(hw.stillThere)}</dd></div>
+        <div><dt>${esc(T('hw.where'))}</dt><dd>${esc(hw.whereNow)}</dd></div>
       </dl>
     </div>
     <div class="hw-gallery" aria-live="polite"><p class="loading">${esc(T('hw.loading'))}</p></div>

@@ -1,6 +1,6 @@
 # Demo — 2 dakika
 
-Canlı: **https://mhecanizmas.github.io/still-there/**
+Canlı: **https://mhecanizmas.github.io/baief/**
 
 Bu metin ezberlenmek için değil, **tıklama sırası + ne söyleneceği** için. Altında
 İngilizce kısa sürümü ve jüri sorularına hazırlık var.
