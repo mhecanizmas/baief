@@ -115,16 +115,18 @@ function selectPair(src) {
   if (window.matchMedia('(max-width: 1100px)').matches) centreChosenCard();
 }
 
-/* Leaflet's setView and tile work reflow the page on the same frame, which
-   cancels a smooth scroll started inside requestAnimationFrame. Waiting for
-   the layout to settle first makes it stick. */
+/* Two things this has to survive: Leaflet reflows the page on the same
+   frame (so the move waits for layout to settle), and a smooth scroll
+   never advances while the tab is not painting — background tabs, and
+   anyone with animations turned down. An instant move always lands, and
+   on a strip whose contents just changed it reads fine. */
 function centreChosenCard() {
   setTimeout(() => {
     const card = document.querySelector('.pair-btn.is-on')?.parentElement;
     const strip = card?.parentElement;
     if (!card || !strip || !strip.clientWidth) return;
     const left = card.offsetLeft - (strip.clientWidth - card.offsetWidth) / 2;
-    strip.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    strip.scrollLeft = Math.max(0, left);
   }, 160);
 }
 
