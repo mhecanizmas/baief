@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — the pairs
+   BAIEF — the pairs
    Each entry is one place on Earth, one place on another world,
    and one piece of hardware that is still sitting there.
    ============================================================ */

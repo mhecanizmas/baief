@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — NASA Image and Video Library client
+   BAIEF — NASA Image and Video Library client
 
    The library does NOT generate every size for every item: some
    have orig+small+thumb, some only orig+thumb. Guessing "~medium"

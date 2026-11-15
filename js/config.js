@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — configuration
+   BAIEF — configuration
    Every endpoint below was probed live before being written in.
    ============================================================ */
 'use strict';

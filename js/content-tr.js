@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — Turkish text for the eight pairs
+   BAIEF — Turkish text for the eight pairs
    Keyed by pair id. Anything left out falls back to the English
    in data.js, so a partial translation still renders.
    ============================================================ */

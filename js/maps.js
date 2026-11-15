@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — the twin map engine
+   BAIEF — the twin map engine
    Two Leaflet maps in two different projections, kept at the
    same number of metres per pixel so a comparison is honest.
    ============================================================ */

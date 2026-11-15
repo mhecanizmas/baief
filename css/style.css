@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE
+   BAIEF
    ============================================================ */
 
 :root {
@@ -508,3 +508,13 @@ body.mode-explore .stage { grid-template-columns: minmax(0, 1fr) var(--story-w);
 }
 .lang-btn:hover { color: var(--ink-2); }
 .lang-btn.is-on { background: var(--bg-3); color: var(--gold); }
+
+/* the one-sentence description of what this is */
+.rail-lead {
+  margin: 0 0 14px; font-size: 12px; line-height: 1.55; color: var(--ink-2);
+  border-left: 2px solid var(--mars); padding-left: 10px;
+}
+.help-lead {
+  font-size: 13.5px !important; line-height: 1.6; color: var(--ink) !important;
+  border-left: 2px solid var(--gold); padding-left: 12px; margin-bottom: 16px !important;
+}

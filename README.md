@@ -1,6 +1,10 @@
-# STILL THERE
+# BAIEF
 
 **Twin places on two worlds — seen by machines we left behind.**
+
+BAIEF puts a place on Earth beside its twin on Mars or the Moon at genuinely
+equal scale, and tells the story of the NASA machine still sitting on the far
+one — the one nobody ever went back for.
 
 A NASA Space Apps entry for *Abandoned but not Forgotten: Storytelling about
 NASA's Discarded Equipment on the Moon and Mars.*

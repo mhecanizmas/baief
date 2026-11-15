@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — interface
+   BAIEF — interface
    Every user-facing string goes through L10N.t(); every pair goes
    through L10N.pair() before it is drawn.
    ============================================================ */
@@ -459,6 +459,7 @@ function wireChrome() {
   $('#helpBtn').onclick = () => {
     $('#modalBody').innerHTML = `
       <h3 id="modalTitle">${esc(T('help.title'))}</h3>
+      <p class="help-lead">${esc(T('brand.what'))}</p>
       <ol class="help-list">
         <li>${T('help.1')}</li>
         <li>${T('help.2')}</li>

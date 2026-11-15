@@ -1,5 +1,5 @@
 /* ============================================================
-   STILL THERE — language
+   BAIEF — language
    English lives in data.js and is the source text. Turkish is an
    overlay keyed by pair id, so adding a third language means
    adding one more overlay and changing nothing else.
@@ -69,6 +69,8 @@ const UI = {
   "ex.delete":       { en: "Delete", tr: "Sil" },
   "ex.freeroam":     { en: "free exploration", tr: "serbest keşif" },
 
+  "brand.what":      { en: "BAIEF puts a place on Earth beside its twin on Mars or the Moon at genuinely equal scale, and tells the story of the NASA machine still sitting on the far one — the one nobody ever went back for.",
+                       tr: "BAIEF, Dünya'daki bir yeri Mars ya da Ay'daki ikiziyle gerçekten aynı ölçekte yan yana koyar ve o uzak noktada hâlâ duran, kimsenin geri almaya gitmediği NASA donanımının hikâyesini anlatır." },
   "help.title":      { en: "How to use this", tr: "Bu nasıl kullanılır" },
   "help.1":          { en: "<strong>Pick a pair.</strong> Each one is a place on Earth next to a place on Mars or the Moon that formed the same way.",
                        tr: "<strong>Bir çift seç.</strong> Her biri, Dünya'daki bir yerin yanına aynı şekilde oluşmuş bir Mars ya da Ay yerini koyar." },
